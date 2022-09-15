@@ -1,41 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define SIZE 50
+
 
 int main()
 {
-	int dataCnt = 0;
-	scanf("%d", &dataCnt);
+    int cnt=0 ;
 
-	for (int i = 0; i < dataCnt; i++)
-	{
-		int isError = 0;
-		int left = 0;
-		int right = 0;
-		char dataStr[50];
-		scanf("%s",dataStr);
+    scanf("%d",&cnt);
+        for(int c=0;c<cnt;c++)
+    {
+        int a=0;
+        int b=0;
+        char str[SIZE];
+        int nop=0;
+        scanf("%s",str);
+        for(int i=0;str[i]!='\0';i++)
+            {
+            if(str[i] == '(')
+               a++;
+            if(str[i]==')')
+                b++;
+            
 
-		for (int j = 0; dataStr[j] != '\0'; j++)
-		{
-			if (dataStr[j] == '(')
-				left++;
-			if (dataStr[j] == ')')
-				right++;
+        if(a<b){
+            nop++;
+           
+        }
+            }
 
-			if (left < right)
-			{
-				isError++;
-				break;
-			}
-		}
+        if(a!=b||nop > 0)
+        {
+            printf("NO\n");
+          
+        
+        }
+        else
+            printf("YES\n");
 
-		if (left != right || isError > 0)
-		{
-			printf("NO\n");
-			continue;
-		}
 
-		printf("YES\n");
-	}
+    }
 
-	return 0;
+
+
+    return 0;
 }
